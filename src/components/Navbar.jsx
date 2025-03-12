@@ -4,7 +4,7 @@ import styled, { useTheme } from "styled-components";
 import { Bio } from "../data/constants";
 import { MenuRounded } from "@mui/icons-material";
 
-const Nav = styled.div
+const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
   height: 80px;
   display: flex;
@@ -16,25 +16,25 @@ const Nav = styled.div
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-;
+`;
 
-const NavbarContainer = styled.div
+const NavbarContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-;
+`;
 
-const NavLogo = styled(LinkR)
+const NavLogo = styled(LinkR)`
   font-weight: 600;
   font-size: 20px;
   color: ${({ theme }) => theme.primary};
   text-decoration: none;
-;
+`;
 
-const NavItems = styled.ul
+const NavItems = styled.ul`
   display: flex;
   align-items: center;
   gap: 32px;
@@ -43,9 +43,9 @@ const NavItems = styled.ul
   @media screen and (max-width: 768px) {
     display: none;
   }
-;
+`;
 
-const NavLink = styled.a
+const NavLink = styled.a`
   color: ${({ theme }) => theme.text_primary};
   cursor: pointer;
   text-decoration: none;
@@ -71,15 +71,15 @@ const NavLink = styled.a
   &:hover::after {
     width: 100%;
   }
-;
+`;
 
-const ButtonContainer = styled.div
+const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-;
+`;
 
-const GithubButton = styled.a
+const GithubButton = styled.a`
   background: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.text_primary};
   padding: 10px 20px;
@@ -91,17 +91,22 @@ const GithubButton = styled.a
     background: ${({ theme }) => theme.card_light};
     color: ${({ theme }) => theme.primary};
   }
-;
 
-const MobileIcon = styled.div
+  @media screen and (max-width: 768px) {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+`;
+
+const MobileIcon = styled.div`
   display: none;
   @media screen and (max-width: 768px) {
     display: block;
     cursor: pointer;
   }
-;
+`;
 
-const MobileMenu = styled.ul
+const MobileMenu = styled.ul`
   width: 100%;
   background: ${({ theme }) => theme.card_light + 99};
   position: absolute;
@@ -118,7 +123,7 @@ const MobileMenu = styled.ul
   display: flex;
   flex-direction: column;
   padding: 16px 40px;
-;
+`;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,27 +143,25 @@ const Navbar = () => {
         <NavItems>
           {["About", "Skills", "Experience", "Projects", "Education"].map(
             (item) => (
-              <NavLink key={item} href={#${item}}>
+              <NavLink key={item} href={`#${item}`}>
                 {item}
               </NavLink>
             )
           )}
         </NavItems>
 
-        {isOpen && (
-          <MobileMenu isOpen={isOpen}>
-            {["About", "Skills", "Experience", "Projects", "Education"].map(
-              (item) => (
-                <NavLink key={item} href={#${item}} onClick={toggleMenu}>
-                  {item}
-                </NavLink>
-              )
-            )}
-            <GithubButton href={Bio.github} target="_blank">
-              Github Profile
-            </GithubButton>
-          </MobileMenu>
-        )}
+        <MobileMenu isOpen={isOpen}>
+          {["About", "Skills", "Experience", "Projects", "Education"].map(
+            (item) => (
+              <NavLink key={item} href={`#${item}`} onClick={toggleMenu}>
+                {item}
+              </NavLink>
+            )
+          )}
+          <GithubButton href={Bio.github} target="_blank">
+            Github Profile
+          </GithubButton>
+        </MobileMenu>
 
         <ButtonContainer>
           <GithubButton href={Bio.github} target="_blank">
@@ -171,3 +174,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
