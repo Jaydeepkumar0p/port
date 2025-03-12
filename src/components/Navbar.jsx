@@ -82,8 +82,8 @@ const ButtonContainer = styled.div`
 const GithubButton = styled.a`
   background: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.text_primary};
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 4px 10px;
+  border-radius: 15px;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.3, 0.7, 0.4, 1);
 
@@ -93,8 +93,8 @@ const GithubButton = styled.a`
   }
 
   @media screen and (max-width: 768px) {
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 4px 8px;
+    font-size: 12px;
   }
 `;
 
@@ -159,13 +159,13 @@ const Navbar = () => {
             )
           )}
           <GithubButton href={Bio.github} target="_blank">
-            Github Profile
+            Github
           </GithubButton>
         </MobileMenu>
 
         <ButtonContainer>
           <GithubButton href={Bio.github} target="_blank">
-            Github Profile
+            Github
           </GithubButton>
         </ButtonContainer>
       </NavbarContainer>
@@ -174,4 +174,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
