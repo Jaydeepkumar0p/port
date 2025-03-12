@@ -98,6 +98,7 @@ const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     cursor: pointer;
+    font-size: 28px;
   }
 `;
 
@@ -145,20 +146,18 @@ const Navbar = () => {
           )}
         </NavItems>
 
-        {isOpen && (
-          <MobileMenu isOpen={isOpen}>
-            {["About", "Skills", "Experience", "Projects", "Education"].map(
-              (item) => (
-                <NavLink key={item} href={`#${item}`} onClick={toggleMenu}>
-                  {item}
-                </NavLink>
-              )
-            )}
-            <GithubButton href={Bio.github} target="_blank">
-              Github Profile
-            </GithubButton>
-          </MobileMenu>
-        )}
+        <MobileMenu isOpen={isOpen}>
+          {["About", "Skills", "Experience", "Projects", "Education"].map(
+            (item) => (
+              <NavLink key={item} href={`#${item}`} onClick={toggleMenu}>
+                {item}
+              </NavLink>
+            )
+          )}
+          <GithubButton href={Bio.github} target="_blank">
+            Github Profile
+          </GithubButton>
+        </MobileMenu>
 
         <ButtonContainer>
           <GithubButton href={Bio.github} target="_blank">
