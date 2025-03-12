@@ -9,17 +9,18 @@ const StyledCanvasWrapper = styled.div`
   height: auto;
   position: absolute;
   inset: 0;
+  background: radial-gradient(circle, #0d0d2b, #01010a); /* Soft cosmic glow */
 `;
 
 const Stars = (props) => {
   const ref = useRef();
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
+    random.inSphere(new Float32Array(7000), { radius: 1.5 }) // More points for density
   );
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+    ref.current.rotation.x -= delta / 12; // Slower rotation for smoothness
+    ref.current.rotation.y -= delta / 18;
   });
 
   return (
@@ -27,10 +28,11 @@ const Stars = (props) => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color="#f272c8"
-          size={0.002}
+          color="#e056fd"
+          size={0.0025}  // Slightly larger for softer points
           sizeAttenuation={true}
           depthWrite={false}
+          opacity={0.8} // Softer glow effect
         />
       </Points>
     </group>
